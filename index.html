@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Евгени, ты будешь моей Venom?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+        }
+        .gif-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .message {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Евгени, ты будешь моей Venom?</h1>
+    <div class="buttons" id="buttonsContainer">
+        <button class="yes" onclick="showGif()">Да</button>
+        <button class="no" onclick="increaseSize()">Нет</button>
+    </div>
+    <div class="gif-container" id="gifContainer">
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Обнимающиеся котики">
+    </div>
+    <div class="message" id="message">УРА! Я ЗНАЛ, ЧТО ТЫ СОГЛАСИШЬСЯ! 🎉</div>
+    
+    <script>
+        let size = 20;
+        let yesButton = document.querySelector('.yes');
+        let noButton = document.querySelector('.no');
+        const noTexts = [
+            "Если скажешь нет, то я расстроюсь 😢",
+            "Ну пожалуйста, подумай ещё раз! 😿",
+            "Ты точно хочешь отказать? 🥺",
+            "А как же наша дружба? 💔",
+            "Я буду плакать, если ты скажешь нет... 😭"
+        ];
+
+        function showGif() {
+            document.getElementById('gifContainer').style.display = 'block';
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('buttonsContainer').style.display = 'none';
+        }
+
+        function increaseSize() {
+            size += 20;
+            yesButton.style.fontSize = size + 'px';
+            yesButton.style.padding = (size / 2) + 'px';
+            
+            let randomIndex = Math.floor(Math.random() * noTexts.length);
+            noButton.innerText = noTexts[randomIndex];
+        }
+    </script>
+</body>
+</html>
